@@ -231,6 +231,23 @@ p {
   margin-bottom: 22px;
 }
 
+.simple-access {
+  text-align: center;
+}
+
+.simple-access .stamp {
+  justify-content: center;
+}
+
+.simple-access h1 {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.simple-access .password-form {
+  margin-top: 28px;
+}
+
 .password-form {
   display: grid;
   gap: 12px;
@@ -419,6 +436,54 @@ p {
   border-top: 1px solid rgba(70, 55, 30, 0.16);
 }
 
+.page-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.page-actions .primary-button {
+  min-width: min(100%, 260px);
+}
+
+.photo-page {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+  padding: clamp(18px, 4vw, 28px);
+  border: 1px solid rgba(70, 55, 30, 0.12);
+  border-radius: 4px;
+  background: #f8efd6;
+}
+
+.kindle-photo {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid rgba(70, 55, 30, 0.14);
+  border-radius: 4px;
+  background: #efe0ba;
+}
+
+.kindle-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 3px;
+  filter: sepia(0.12) contrast(0.95);
+  animation: photoFade 260ms ease;
+}
+
+.kindle-photo figcaption {
+  margin-top: 10px;
+  color: #5f4b2d;
+  font-family: Bookerly, Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
 .quiz-block {
   margin-top: 26px;
 }
@@ -444,6 +509,16 @@ p {
 @keyframes caret {
   50% {
     border-color: transparent;
+  }
+}
+
+@keyframes photoFade {
+  from {
+    opacity: 0.72;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
@@ -602,6 +677,7 @@ p {
   }
 
   .memory-grid,
+  .photo-page,
   .confirm-actions,
   .reveal-panel {
     grid-template-columns: 1fr;
