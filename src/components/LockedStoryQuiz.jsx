@@ -34,6 +34,9 @@ const photoPageImages = Object.entries(galleryModules)
   .sort(([firstPath], [secondPath]) => firstPath.localeCompare(secondPath))
   .map(([path, src]) => ({ id: path, src }))
 
+const finalMessage =
+  'Assim como foi quando eu conheci você, nunca existiu plano B.\n\nTe amo.'
+
 export default function LockedStoryQuiz() {
   const [currentChapter, setCurrentChapter] = useState(1)
   const [chapterOneSelected, setChapterOneSelected] = useState('')
@@ -46,6 +49,7 @@ export default function LockedStoryQuiz() {
   const [isChapterTwoUnlocked, setIsChapterTwoUnlocked] = useState(false)
   const [isChapterThreeUnlocked, setIsChapterThreeUnlocked] = useState(false)
   const [photoPageIndex, setPhotoPageIndex] = useState(0)
+  const [finalMessageLength, setFinalMessageLength] = useState(0)
 
   const photoGroups = Math.max(1, Math.ceil(photoPageImages.length / 4))
   const visiblePhotos = Array.from({ length: 4 }, (_, index) => {
@@ -71,6 +75,26 @@ export default function LockedStoryQuiz() {
       image.src = photo.src
     })
   }, [])
+
+  useEffect(() => {
+    if (currentChapter !== 6) {
+      setFinalMessageLength(0)
+      return undefined
+    }
+
+    const intervalId = window.setInterval(() => {
+      setFinalMessageLength((currentLength) => {
+        if (currentLength >= finalMessage.length) {
+          window.clearInterval(intervalId)
+          return currentLength
+        }
+
+        return currentLength + 1
+      })
+    }, 42)
+
+    return () => window.clearInterval(intervalId)
+  }, [currentChapter])
 
   function handleChapterOneAnswer(option) {
     setChapterOneSelected(option)
@@ -211,7 +235,7 @@ export default function LockedStoryQuiz() {
                 <p>
                   Já ela, devido ao cavalheirismo do malandro, achou que tivesse
                   encontrado o príncipe encantado. Aí vem a pergunta: será que
-                  ambos sentiram a mesma coisa quando saíram daquele date?
+                  os anjos comemoraram quando eles finalmente se encontraram?
                 </p>
                 <p>
                   De lá para cá, foram muitas festas, dates, flores, cartas e,
@@ -299,7 +323,7 @@ export default function LockedStoryQuiz() {
                   Esse, que, aos olhos de quem vê, pode ser doloroso, mas, para
                   os nossos protagonistas, será apenas o primeiro obstáculo que
                   eles terão de enfrentar como casal. Uma das piores dores que
-                  vão sentir é a saudade, da qual machuca. Mas privilegiada é
+                  vão sentir é a saudade, da qual machuca. Mas, privilegiada é
                   a pessoa que pode senti-la, já que, para passar por tal
                   sentimento, é necessário ter alguém que significa muito para
                   você.
@@ -349,10 +373,10 @@ export default function LockedStoryQuiz() {
 
         {currentChapter === 6 && (
           <div className="final-note-page">
-            <p className="final-typed-line final-typed-main">
-              Assim como foi quando eu conheci você, nunca existiu plano B.
+            <p className="final-typed-message">
+              {finalMessage.slice(0, finalMessageLength)}
+              <span className="typing-caret" />
             </p>
-            <p className="final-typed-line final-typed-love">Te amo.</p>
           </div>
         )}
       </section>
