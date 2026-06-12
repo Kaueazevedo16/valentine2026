@@ -25,9 +25,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 18% 18%, rgba(255, 90, 132, 0.34), transparent 30%),
-    radial-gradient(circle at 84% 12%, rgba(255, 201, 40, 0.65), transparent 34%),
-    linear-gradient(180deg, #ff8fab 0%, #ffc928 48%, #ffdf6a 100%),
+    radial-gradient(circle at 18% 18%, rgba(255, 205, 112, 0.32), transparent 30%),
+    radial-gradient(circle at 84% 12%, rgba(255, 201, 40, 0.55), transparent 34%),
+    linear-gradient(180deg, #f3d88b 0%, #ffdf6a 48%, #f4e6c1 100%),
     #ffc928;
 }
 
@@ -126,7 +126,7 @@ p {
   overflow: hidden;
   border: 1px solid rgba(183, 131, 24, 0.28);
   background:
-    linear-gradient(135deg, rgba(255, 231, 67, 0.96), rgba(255, 135, 164, 0.74)),
+    linear-gradient(135deg, rgba(255, 231, 67, 0.92), rgba(226, 170, 72, 0.64)),
     #ffc928;
   transition:
     transform 180ms ease,
@@ -141,8 +141,8 @@ p {
   position: absolute;
   width: 42px;
   height: 42px;
-  background: #e83f73;
-  opacity: 0.22;
+  background: #b87822;
+  opacity: 0.16;
   transform: rotate(45deg);
 }
 
@@ -158,14 +158,14 @@ p {
 
 .plan-card:nth-child(2) {
   background:
-    linear-gradient(135deg, rgba(255, 151, 176, 0.95), rgba(255, 214, 80, 0.84)),
-    #ff8fab;
+    linear-gradient(135deg, rgba(239, 196, 109, 0.9), rgba(255, 214, 80, 0.8)),
+    #f3d88b;
 }
 
 .plan-card:hover,
 .plan-card:focus-visible {
   transform: translateY(-3px);
-  border-color: rgba(196, 82, 109, 0.58);
+  border-color: rgba(122, 84, 32, 0.48);
   box-shadow: 0 20px 46px rgba(150, 60, 33, 0.18);
 }
 
@@ -391,6 +391,20 @@ p {
     opacity 220ms ease;
 }
 
+.story-copy {
+  display: grid;
+  gap: 1.2rem;
+  transition:
+    filter 220ms ease,
+    opacity 220ms ease;
+}
+
+.story-copy.locked {
+  filter: blur(7px);
+  user-select: none;
+  pointer-events: none;
+}
+
 .story-text p {
   color: #2f2618;
   font-family: Bookerly, Georgia, 'Times New Roman', serif;
@@ -399,14 +413,22 @@ p {
   text-align: left;
 }
 
-.story-text.locked {
-  filter: blur(7px);
-  user-select: none;
-  pointer-events: none;
+.chapter-section {
+  margin-top: clamp(42px, 9vw, 72px);
+  padding-top: clamp(28px, 6vw, 44px);
+  border-top: 1px solid rgba(70, 55, 30, 0.16);
 }
 
 .quiz-block {
   margin-top: 26px;
+}
+
+.inline-quiz {
+  margin: 8px 0;
+  padding: 18px;
+  border: 1px solid rgba(112, 75, 22, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 232, 149, 0.72);
 }
 
 @keyframes typing {
