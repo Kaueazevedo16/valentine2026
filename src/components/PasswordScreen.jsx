@@ -10,10 +10,7 @@ const planBMessages = [
 
 export default function PasswordScreen({
   planType,
-  title,
-  description,
   buttonText,
-  hint,
   onSuccess,
   onBack,
   onGoToPlanA,
@@ -23,7 +20,7 @@ export default function PasswordScreen({
   const [planBAttempts, setPlanBAttempts] = useState(0)
 
   const isPlanBLocked = planType === 'B' && planBAttempts >= 3
-  const isPlanA = planType === 'A'
+  const displayTitle = planType === 'A' ? 'Plano A' : 'Plano B'
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -47,22 +44,12 @@ export default function PasswordScreen({
   return (
     <main className="screen password-screen">
       <section
-        className={
-          isPlanA ? 'document-card access-panel simple-access' : 'document-card access-panel'
-        }
+        className="document-card access-panel simple-access"
       >
-        {!isPlanA && (
-          <button className="ghost-link back-link" type="button" onClick={onBack}>
-            Voltar
-          </button>
-        )}
-
         <span className="stamp">ACESSO RESTRITO</span>
-        <h1>{isPlanA ? 'Plano A' : title}</h1>
-        {!isPlanA && <p>{description}</p>}
+        <h1>{displayTitle}</h1>
 
         <form className="password-form" onSubmit={handleSubmit}>
-          {!isPlanA && <label htmlFor="password">Senha</label>}
           <input
             id="password"
             type="password"
@@ -77,7 +64,6 @@ export default function PasswordScreen({
           </button>
         </form>
 
-        {!isPlanA && <p className="hint">{hint}</p>}
         {error && <p className="feedback error">{error}</p>}
 
         {isPlanBLocked && (

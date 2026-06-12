@@ -430,6 +430,10 @@ p {
   text-align: left;
 }
 
+.story-copy p {
+  text-indent: 1.6em;
+}
+
 .chapter-section {
   margin-top: clamp(42px, 9vw, 72px);
   padding-top: clamp(28px, 6vw, 44px);
@@ -457,12 +461,66 @@ p {
   background: #f8efd6;
 }
 
+.continued-title {
+  display: grid;
+  min-height: min(560px, calc(100vh - 260px));
+  place-items: center;
+  margin: 0;
+  color: #2b2114;
+  font-family: Bookerly, Georgia, 'Times New Roman', serif;
+  font-size: clamp(3.6rem, 16vw, 8rem);
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+.final-note-page {
+  display: grid;
+  align-content: center;
+  gap: 28px;
+  min-height: min(700px, calc(100vh - 120px));
+  padding: clamp(24px, 6vw, 60px);
+  border: 1px solid rgba(70, 55, 30, 0.12);
+  border-radius: 4px;
+  background: #f8efd6;
+}
+
+.final-note-page p {
+  color: #2f2618;
+  font-family: Bookerly, Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 7vw, 3.3rem);
+  line-height: 1.28;
+  text-align: center;
+}
+
+.final-typed-line {
+  overflow: hidden;
+  width: 0;
+  max-width: max-content;
+  margin: 0 auto;
+  white-space: nowrap;
+  border-right: 3px solid #6f5b38;
+}
+
+.final-typed-main {
+  animation:
+    finalTyping 5.8s steps(64, end) forwards,
+    caret 800ms step-end infinite;
+}
+
+.final-typed-love {
+  animation:
+    finalTyping 1.8s steps(7, end) 6.2s forwards,
+    caret 800ms step-end 6.2s infinite;
+}
+
 .kindle-photo {
   margin: 0;
   padding: 10px;
   border: 1px solid rgba(70, 55, 30, 0.14);
   border-radius: 4px;
   background: #efe0ba;
+  animation: photoFade 700ms ease both;
 }
 
 .kindle-photo img {
@@ -472,7 +530,6 @@ p {
   object-fit: cover;
   border-radius: 3px;
   filter: sepia(0.12) contrast(0.95);
-  animation: photoFade 260ms ease;
 }
 
 .kindle-photo figcaption {
@@ -514,11 +571,23 @@ p {
 
 @keyframes photoFade {
   from {
-    opacity: 0.72;
+    opacity: 0.62;
+    transform: scale(0.985);
   }
 
   to {
     opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes finalTyping {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
   }
 }
 
@@ -655,20 +724,6 @@ p {
   margin-top: 12px;
 }
 
-.lock-button {
-  position: fixed;
-  z-index: 5;
-  top: 18px;
-  right: 18px;
-  min-height: 38px;
-  border: 1px solid rgba(111, 83, 31, 0.18);
-  border-radius: 8px;
-  padding: 0 12px;
-  color: var(--brown);
-  background: rgba(255, 232, 149, 0.9);
-  backdrop-filter: blur(12px);
-}
-
 @media (max-width: 760px) {
   .screen {
     width: min(100% - 24px, 1080px);
@@ -692,9 +747,4 @@ p {
     min-height: 260px;
   }
 
-  .lock-button {
-    left: 12px;
-    right: 12px;
-    width: calc(100% - 24px);
-  }
 }

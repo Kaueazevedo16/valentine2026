@@ -26,20 +26,8 @@ export default function App() {
     setScreen('fairyIntro')
   }
 
-  function lockAgain() {
-    localStorage.removeItem(STORAGE_KEY)
-    setSelectedPlan(null)
-    setScreen('plans')
-  }
-
   return (
     <div className="app-shell">
-      {screen !== 'plans' && (
-        <button className="lock-button" type="button" onClick={lockAgain}>
-          Bloquear novamente
-        </button>
-      )}
-
       {screen === 'plans' && <PlanChoiceScreen onChoosePlan={choosePlan} />}
 
       {screen === 'password' && selectedPlan === 'A' && (

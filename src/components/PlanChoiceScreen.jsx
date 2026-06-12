@@ -1,7 +1,7 @@
 export default function PlanChoiceScreen({ onChoosePlan }) {
   return (
     <main className="screen choice-screen">
-      <section className="plan-grid" aria-label="Planos disponiveis">
+      <section className="plan-grid" aria-label="Planos disponíveis">
         <button
           className="document-card plan-card"
           type="button"
