@@ -23,20 +23,25 @@ export default function LockedStoryQuiz() {
   return (
     <main className="screen story-screen">
       <section className="document-card story-panel">
-        <span className="stamp">Capítulo secreto</span>
+        <span className="kindle-label">Plano A</span>
         <h1 className="story-title">Capitulo I</h1>
 
         <div className={isUnlocked ? 'story-text' : 'story-text locked'}>
           <p>
-            Este é um texto de exemplo para ocupar o lugar da história final.
-            Aqui vai entrar uma mensagem especial, escrita como um pequeno conto
-            de fadas, sobre uma escolha, um encontro e um Plano A que sempre fez
-            sentido.
+            Era uma vez, em um reino muito distante, mais conhecido como Rio de
+            Janeiro, onde duas pessoas, que seguiam seus próprios caminhos,
+            tiveram um encontro inesperado que mudaria o rumo de suas vidas para
+            sempre.
           </p>
           <p>
-            Quando o texto verdadeiro chegar, esta parte pode ser trocada por
-            algo mais pessoal, com detalhes da história de vocês e uma surpresa
-            no final.
+            Ele não procurava nada, se sentia completo e feliz, e ela vivia uma
+            de suas melhores fases, tanto profissionalmente quanto mentalmente.
+            Mas, por ironia do destino, encontraram, um no outro, aquilo que
+            jamais tiveram coragem de procurar, o Amor.
+          </p>
+          <p>
+            E o tal do Amor veio, mesclado de confusão, e muitos encontros,
+            esses, que geraram boas histórias....
           </p>
         </div>
 
