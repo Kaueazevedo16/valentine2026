@@ -1,7 +1,10 @@
-export default function FairyTaleIntro({ onNext }) {
+export default function FairyTaleIntro({ onNext, onBack }) {
   return (
     <main className="screen fairy-screen">
       <section className="fairy-panel">
+        <button className="ghost-link fairy-back" type="button" onClick={onBack}>
+          Voltar
+        </button>
         <span className="stamp">Plano A</span>
         <h1 className="fairy-title">Era uma vez...</h1>
         <p>

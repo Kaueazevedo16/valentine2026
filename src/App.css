@@ -340,6 +340,7 @@ p {
 }
 
 .fairy-panel {
+  position: relative;
   width: min(760px, 100%);
   padding: clamp(28px, 6vw, 56px);
   border: 1px solid rgba(183, 131, 24, 0.24);
@@ -347,6 +348,12 @@ p {
   background: linear-gradient(180deg, rgba(255, 232, 149, 0.95), rgba(255, 189, 85, 0.88));
   box-shadow: var(--shadow);
   text-align: center;
+}
+
+.fairy-back {
+  position: absolute;
+  top: 14px;
+  left: 14px;
 }
 
 .fairy-title {
@@ -495,23 +502,23 @@ p {
 
 .final-typed-line {
   overflow: hidden;
-  width: 0;
-  max-width: max-content;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  white-space: nowrap;
+  white-space: normal;
   border-right: 3px solid #6f5b38;
 }
 
 .final-typed-main {
   animation:
-    finalTyping 5.8s steps(64, end) forwards,
+    finalReveal 2.8s steps(64, end) forwards,
     caret 800ms step-end infinite;
 }
 
 .final-typed-love {
   animation:
-    finalTyping 1.8s steps(7, end) 6.2s forwards,
-    caret 800ms step-end 6.2s infinite;
+    finalReveal 1s steps(7, end) 3s forwards,
+    caret 800ms step-end 3s infinite;
 }
 
 .kindle-photo {
@@ -520,7 +527,8 @@ p {
   border: 1px solid rgba(70, 55, 30, 0.14);
   border-radius: 4px;
   background: #efe0ba;
-  animation: photoFade 700ms ease both;
+  animation: photoFade 900ms ease both;
+  will-change: opacity, transform;
 }
 
 .kindle-photo img {
@@ -571,23 +579,23 @@ p {
 
 @keyframes photoFade {
   from {
-    opacity: 0.62;
-    transform: scale(0.985);
+    opacity: 0.78;
   }
 
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
-@keyframes finalTyping {
+@keyframes finalReveal {
   from {
-    width: 0;
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
   }
 
   to {
-    width: 100%;
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
   }
 }
 

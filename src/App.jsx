@@ -59,7 +59,14 @@ export default function App() {
       )}
 
       {screen === 'fairyIntro' && (
-        <FairyTaleIntro onNext={() => setScreen('lockedStory')} />
+        <FairyTaleIntro
+          onNext={() => setScreen('lockedStory')}
+          onBack={() => {
+            localStorage.removeItem(STORAGE_KEY)
+            setSelectedPlan(null)
+            setScreen('plans')
+          }}
+        />
       )}
 
       {screen === 'lockedStory' && <LockedStoryQuiz />}

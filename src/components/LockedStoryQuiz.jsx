@@ -65,6 +65,13 @@ export default function LockedStoryQuiz() {
     return () => window.clearInterval(intervalId)
   }, [currentChapter, photoGroups])
 
+  useEffect(() => {
+    photoPageImages.forEach((photo) => {
+      const image = new Image()
+      image.src = photo.src
+    })
+  }, [])
+
   function handleChapterOneAnswer(option) {
     setChapterOneSelected(option)
 
