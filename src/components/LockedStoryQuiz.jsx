@@ -24,7 +24,7 @@ export default function LockedStoryQuiz() {
     <main className="screen story-screen">
       <section className="document-card story-panel">
         <span className="stamp">Capítulo secreto</span>
-        <h1>Uma página ainda escondida</h1>
+        <h1 className="story-title">Capitulo I</h1>
 
         <div className={isUnlocked ? 'story-text' : 'story-text locked'}>
           <p>

@@ -1,13 +1,7 @@
 export default function PlanChoiceScreen({ onChoosePlan }) {
   return (
     <main className="screen choice-screen">
-      <section className="hero-copy">
-        <span className="stamp">CONFIDENCIAL</span>
-        <h1>Escolha seu plano</h1>
-        <p>A carta já foi entregue. Agora a escolha precisa ser confirmada.</p>
-      </section>
-
-      <section className="plan-grid" aria-label="Planos disponíveis">
+      <section className="plan-grid" aria-label="Planos disponiveis">
         <button
           className="document-card plan-card"
           type="button"

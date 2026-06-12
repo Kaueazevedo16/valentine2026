@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const ACCESS_PASSWORD_A = 'SENHA_DA_CARTA'
+const ACCESS_PASSWORD_A = '201'
 
 const planBMessages = [
   'Senha incorreta. O Plano B parece mais difícil do que deveria.',

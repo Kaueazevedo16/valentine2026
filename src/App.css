@@ -25,7 +25,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    linear-gradient(180deg, #ffe08a 0%, #fff8df 48%, #fffaf0 100%),
+    linear-gradient(180deg, #ffd9df 0%, #ffe58f 44%, #fff8df 100%),
     #fff8df;
 }
 
@@ -58,12 +58,8 @@ input:disabled {
 
 .choice-screen {
   display: grid;
+  place-items: center;
   align-content: center;
-  gap: 28px;
-}
-
-.hero-copy {
-  max-width: 720px;
 }
 
 h1 {
@@ -105,8 +101,9 @@ p {
 
 .plan-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  width: min(520px, 100%);
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 .document-card {
@@ -117,23 +114,57 @@ p {
 }
 
 .plan-card {
-  min-height: 238px;
-  padding: 28px;
+  min-height: 128px;
+  padding: 24px;
   color: var(--ink);
   display: grid;
   place-items: center;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(183, 131, 24, 0.28);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 230, 144, 0.72)),
+    #fffdf6;
   transition:
     transform 180ms ease,
     border-color 180ms ease,
-    background 180ms ease;
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.plan-card::before,
+.plan-card::after {
+  content: '';
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background: #f28aa0;
+  opacity: 0.16;
+  transform: rotate(45deg);
+}
+
+.plan-card::before {
+  top: -22px;
+  left: 22px;
+}
+
+.plan-card::after {
+  right: 26px;
+  bottom: -22px;
+}
+
+.plan-card:nth-child(2) {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(255, 216, 225, 0.76)),
+    #fffdf6;
 }
 
 .plan-card:hover,
 .plan-card:focus-visible {
   transform: translateY(-3px);
-  border-color: rgba(183, 131, 24, 0.68);
-  background: #fff8d9;
+  border-color: rgba(196, 82, 109, 0.58);
+  box-shadow: 0 20px 46px rgba(150, 60, 33, 0.18);
 }
 
 .file-label {
@@ -147,11 +178,14 @@ p {
 }
 
 .plan-card strong {
+  position: relative;
+  z-index: 1;
   display: block;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.1rem, 12vw, 3.4rem);
   line-height: 1;
+  color: #6f2f22;
 }
 
 .password-screen,
@@ -297,6 +331,9 @@ p {
   margin: 18px auto 16px;
   white-space: nowrap;
   border-right: 3px solid var(--gold);
+  font-family: 'Brush Script MT', 'Segoe Script', 'Lucida Handwriting', cursive;
+  font-size: clamp(3.4rem, 16vw, 7rem);
+  font-weight: 400;
   animation:
     typing 1.8s steps(14, end) forwards,
     caret 700ms step-end infinite;
@@ -309,6 +346,12 @@ p {
 .story-panel {
   width: min(820px, 100%);
   padding: clamp(24px, 5vw, 42px);
+}
+
+.story-title {
+  font-family: 'Brush Script MT', 'Segoe Script', 'Lucida Handwriting', cursive;
+  font-size: clamp(3.2rem, 14vw, 6.4rem);
+  font-weight: 400;
 }
 
 .story-text {
@@ -500,10 +543,10 @@ p {
 @media (max-width: 760px) {
   .screen {
     width: min(100% - 24px, 1080px);
-    padding-top: 78px;
+    padding-top: 28px;
+    padding-bottom: 28px;
   }
 
-  .plan-grid,
   .memory-grid,
   .confirm-actions,
   .reveal-panel {
@@ -511,7 +554,8 @@ p {
   }
 
   .plan-card {
-    min-height: 205px;
+    min-height: 138px;
+    border-radius: 12px;
   }
 
   .final-image {
